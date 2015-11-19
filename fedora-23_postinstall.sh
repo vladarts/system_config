@@ -1,0 +1,1 @@
+sudo dnf install yakuake java-1.8.0-openjdk mc vim
