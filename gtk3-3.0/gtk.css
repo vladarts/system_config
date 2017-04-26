@@ -1,0 +1,14 @@
+notebook tab {
+  font-size: 11px;
+  min-height: 0;
+  padding-top: 1px;
+  padding-bottom: 1px;
+}
+
+notebook tab button {
+  min-height: 0;
+  min-width: 0;
+  padding: 1px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
