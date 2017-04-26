@@ -1,0 +1,26 @@
+[global_config]
+  inactive_color_offset = 0.9
+  scroll_tabbar = True
+  tab_position = bottom
+  title_font = MonacoB 8
+  title_hide_sizetext = True
+  title_inactive_bg_color = "#f3f3f3"
+  title_transmit_bg_color = "#babdb6"
+  title_transmit_fg_color = "#000000"
+  title_use_system_font = False
+[keybindings]
+[layouts]
+  [[default]]
+    [[[child1]]]
+      parent = window0
+      type = Terminal
+    [[[window0]]]
+      parent = ""
+      type = Window
+[plugins]
+[profiles]
+  [[default]]
+    cursor_color = "#aaaaaa"
+    font = MonacoB2 8
+    palette = "#000000:#cd0000:#00cd00:#cdcd00:#0000cd:#cd00cd:#00cdcd:#faebd7:#404040:#ff0000:#00ff00:#ffff00:#0000ff:#ff00ff:#00ffff:#ffffff"
+    use_system_font = False
