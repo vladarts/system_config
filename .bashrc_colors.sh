@@ -75,4 +75,14 @@ On_IWhite='\e[0;107m'   # White
 
 source ~/.git-prompt.sh
 
-PS1="\[$Color_Off\]\t\[$BCyan\]\[$Red\] \[$IRed\]\u \[$IYellow\]\[$IYellow\]\w\[\033[m\]\[$Green\]\$(__git_ps1)\[$Color_Off\]\$ "
+HOSTNAME_PS1=" [$(hostname)]"
+SESSION_TYPE=""
+if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
+  SESSION_TYPE=${HOSTNAME_PS1}
+else
+  case $(ps -o comm= -p $PPID) in
+    sshd|*/sshd) SESSION_TYPE=${HOSTNAME_PS1}
+  esac
+fi
+
+PS1="\[$Color_Off\]\t\[$BCyan\]\[$Red\] \[$IRed\]\u \[$IYellow\]\[$IYellow\]\w\[\033[m\]\[$Cyan\]${SESSION_TYPE}\[$Green\]$(__git_ps1)\[$Color_Off\]\$ "
