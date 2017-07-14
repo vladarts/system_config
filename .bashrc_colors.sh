@@ -85,4 +85,14 @@ else
   esac
 fi
 
-PS1="\[$Color_Off\]\t\[$BCyan\]\[$Red\] \[$IRed\]\u \[$IYellow\]\[$IYellow\]\w\[\033[m\]\[$Cyan\]${SESSION_TYPE}\[$Green\]$(__git_ps1)\[$Color_Off\]\$ "
+
+function __hg_ps1 {
+	if [ -x "$(command -v fasthgbranch)" ]; then
+		echo $(fasthgbranch)
+	fi
+}
+
+
+# \$(fasthgbranch)
+
+PS1="\[$Color_Off\]\t\[$BCyan\]\[$Red\] \[$IRed\]\u \[$IYellow\]\[$IYellow\]\w\[\033[m\]\[$Cyan\]${SESSION_TYPE}\[$Green\]\$(__git_ps1)\[$Color_Off\]\$ "
