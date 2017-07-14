@@ -14,6 +14,6 @@ Mercurial PS1
 * Compile it with 
 
     gcc -o fasthgbranch hg-ps1.c
+    sudo ln -s $(pwd)/fasthgbranch /usr/bin/
 
-* Move to _/usr/bin_
 * Use in PS1 with _\$(fasthgbranch)_
