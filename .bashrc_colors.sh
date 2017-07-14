@@ -92,7 +92,4 @@ function __hg_ps1 {
 	fi
 }
 
-
-# \$(fasthgbranch)
-
 PS1="\[$Color_Off\]\t\[$BCyan\]\[$Red\] \[$IRed\]\u\[$Cyan\]${SESSION_TYPE} \[$IYellow\]\[$IYellow\]\w\[\033[m\]\[$Green\]\$(__git_ps1)\$(__hg_ps1)\[$Color_Off\]\$ "
