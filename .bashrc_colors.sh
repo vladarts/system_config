@@ -75,7 +75,7 @@ On_IWhite='\e[0;107m'   # White
 
 source ~/.git-prompt.sh
 
-HOSTNAME_PS1=" [$(hostname)]"
+HOSTNAME_PS1="[$(hostname)]"
 SESSION_TYPE=""
 if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
   SESSION_TYPE=${HOSTNAME_PS1}
@@ -88,7 +88,7 @@ fi
 
 function __hg_ps1 {
 	if [ -x "$(command -v fasthgbranch)" ]; then
-		echo $(fasthgbranch)
+		echo "$(fasthgbranch)"
 	fi
 }
 
