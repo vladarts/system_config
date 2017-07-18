@@ -92,4 +92,4 @@ function __hg_ps1 {
 	fi
 }
 
-PS1="\[$Color_Off\]\t\[$BCyan\]\[$Red\] \[$IRed\]\u\[$Cyan\]${SESSION_TYPE} \[$IYellow\]\[$IYellow\]\w\[\033[m\]\[$Green\]\$(__git_ps1)\$(__hg_ps1)\[$Color_Off\]\$ "
+PS1="\[$Color_Off\]\t\[$Cyan\]${SESSION_TYPE} \[$IRed\]\u \[$IYellow\]\w\[$Green\]\$(__git_ps1)\$(__hg_ps1)\[$Color_Off\]\$ "
