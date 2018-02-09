@@ -92,4 +92,11 @@ function __hg_ps1 {
 	fi
 }
 
-PS1="\[$Color_Off\]\t\[$Cyan\]${SESSION_TYPE} \[$IRed\]\u \[$IYellow\]\w\[$Green\]\$(__git_ps1)\$(__hg_ps1)\[$Color_Off\]\$ "
+
+function __docker_host_ps1 {
+	if [ ! -z "$DOCKER_HOST" ]; then
+		echo " [D:${DOCKER_HOST}] "
+	fi
+}
+
+PS1="\[$Color_Off\]\t\[$Cyan\]${SESSION_TYPE} \[$IRed\]\u \[$IYellow\]\w\[$Cyan\]\$(__docker_host_ps1)\[$Color_Off\]\[$Green\]\$(__git_ps1)\$(__hg_ps1)\[$Color_Off\]\$ "
