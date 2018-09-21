@@ -73,8 +73,6 @@ On_IPurple='\e[0;105m'  # Purple
 On_ICyan='\e[0;106m'    # Cyan
 On_IWhite='\e[0;107m'   # White
 
-source ~/.git-prompt.sh
-
 HOSTNAME_PS1=" [$(hostname)]"
 SESSION_TYPE=""
 if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
