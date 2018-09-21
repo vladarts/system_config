@@ -1,6 +1,16 @@
 Всякие полезности для настройки системы
 =======================================
 
+PS1 and CLI tools
+-----------------
+
+Add to ~/.bashrc or ~/.bash_profile
+
+.. code-block:: sh
+
+    #: VladArts CLI tools
+    source ${HOME}/dev/system_config/bashrc/main.sh
+
 Шрифты
 ------
 
