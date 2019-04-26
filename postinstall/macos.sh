@@ -24,7 +24,7 @@ cp ${HOME}/dev/system_config/bashrc/macos_bash_profile.sh ${HOME}/.bash_profile
 
 #: Google Chrome color fix
 while true; do
-    read -p "Install Google Chrome Mojave theme fix? [Y/n] " yn
+    read -p "Install Google Chrome Mojave theme fix? [Y/n] " yn </dev/tty
     case ${yn} in
         [Yy]* )
             defaults write org.chromium.Chromium NSRequiresAquaSystemAppearance -bool Yes
@@ -38,7 +38,7 @@ done
 
 #: Mojave fonts fix
 while true; do
-    read -p "Install Mojave antialiasing font fix? [Y/n] " yn
+    read -p "Install Mojave antialiasing font fix? [Y/n] " yn </dev/tty
     case ${yn} in
         [Yy]* )
             defaults write -g CGFontRenderingFontSmoothingDisabled -bool NO
@@ -58,7 +58,7 @@ done
 
 #: gsutil
 while true; do
-    read -p "Install gsutil? [Y/n] " yn
+    read -p "Install gsutil? [Y/n] " yn </dev/tty
     case ${yn} in
         [Yy]* )
             curl https://sdk.cloud.google.com | bash
@@ -79,7 +79,7 @@ done
 
 #: sdkman
 while true; do
-    read -p "Install sdkman? [Y/n] " yn
+    read -p "Install sdkman? [Y/n] " yn </dev/tty
     case ${yn} in
         [Yy]* )
             curl -s get.sdkman.io | bash
