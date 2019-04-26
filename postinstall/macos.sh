@@ -15,7 +15,7 @@ pip3 install virtualenv virtualenvwrapper
 
 #: Clone config repository
 mkdir ${HOME}/dev
-git clone http://git.vladarts.ru/vpiskunov/system_config.git ${HOME}/dev/system_config
+git clone git@github.com:xxxbobrxxx/system_config.git ${HOME}/dev/system_config
 
 #: bash_profile
 rm -f ${HOME}/.bash_profile
