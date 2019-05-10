@@ -1,10 +1,12 @@
+syntax: glob
+
 tmp
-.idea
+.idea*
 *.pyc
 *.iml
 __pycache__
 
-.vscod
+.vscode
 values.local
 .gradle
 dist
