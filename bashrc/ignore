@@ -1,0 +1,11 @@
+tmp
+.idea
+*.pyc
+*.iml
+__pycache__
+
+.vscod
+values.local
+.gradle
+dist
+.pytest_cache
