@@ -3,7 +3,7 @@
 # License GPL 2.0
 #
 # hgflow.py - Mercurial extension to support generalized Driessen's branching model
-# Copyright (C) 2011-2017, Yujie Wu and others
+# Copyright (C) 2011-2018, Yujie Wu and others
 #
 # This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License
 # as published by the Free Software Foundation; either version 2 of the License or any later version.
@@ -112,7 +112,41 @@ from mercurial.i18n import _
 
 
 
-VERSION                   = "0.9.8.3"
+# Deals with continous API changes in `mercurial'.
+def _choose_command() :
+    return (mercurial.registrar if ("4.7" <= util.version()) else cmdutil).command
+
+
+def _choose_datestr() :
+    return (mercurial.utils.dateutil if ("4.7" <= util.version()) else util).datestr
+
+
+def _get_context( repo, rev ) :
+    # As of hg v4.7, `repo' will raise exceptions when a branch name is passed in as `changeid'.
+    try :
+        return repo[rev]
+    except ((error.ProgrammingError, error.RepoLookupError, TypeError) if ("4.7" <= util.version()) else None) :
+        return repo[repo.branchtip( rev )]
+
+
+def _clear_bookmarks( repo ) :
+    try :
+        repo._bookmarks.clear()
+    except AttributeError :
+        # hg v4.7 and later versions
+        repo._bookmarks._refmap.clear()
+
+
+
+class Compatible( object ) :
+    command         = staticmethod( _choose_command() )
+    datestr         = staticmethod( _choose_datestr() )
+    get_context     = staticmethod( _get_context      )
+    clear_bookmarks = staticmethod( _clear_bookmarks  )
+
+
+
+VERSION                   = "0.9.8.4"
 CONFIG_BASENAME           = ".hgflow"
 OLD_CONFIG_BASENAME       = ".flow"
 CONFIG_SECTION_BRANCHNAME = "branchname"
@@ -121,7 +155,7 @@ STRIP_CHARS               = '\'"'
 
 
 cmdtable   = {}
-command    = cmdutil.command( cmdtable )
+command    = Compatible.command( cmdtable )
 colortable = {"flow.error"      : "red bold",
               "flow.warn"       : "magenta bold",
               "flow.note"       : "cyan",
@@ -400,8 +434,7 @@ class Commands( object ) :
         try :
             # Ever since 2.8 the "strip" command has been moved out of the "mq" module to a new module of its own. Issue#56
             if ("strip" == cmd) :
-                from mercurial import __version__
-                if (__version__.version > "2.8") :
+                if (util.version() > "2.8") :
                     where = extensions.find( "strip" )
                     cmd   = "stripcmd"
 
@@ -842,7 +875,7 @@ class Branch( object ) :
         """
         self.ui   = ui
         self.repo = repo
-        self.ctx  = repo[rev]    # `repo[rev]' is slow when there are tens of thousands of named branches.
+        self.ctx  = Compatible.get_context( repo, rev )
 
         self._fullname = str( self.ctx.branch() )
 
@@ -1453,7 +1486,7 @@ class Flow( object ) :
                 for e in closed_branches :
                     self.ui.write( "%-31s" % e.basename( stream ), label = "branches.closed" )
                     self.ui.write( " %18s" % e.rev_node(),         label = "log.changeset"   )
-                    self.ui.write( "  %s\n"  % util.datestr( e.ctx.date(), format = "%Y-%m-%d %a %H:%M %1" ),
+                    self.ui.write( "  %s\n"  % Compatible.datestr( e.ctx.date(), format = "%Y-%m-%d %a %H:%M %1" ),
                                    label = "log.date" )
                     bn = str( e )
                     p1 = e.ctx
@@ -1766,10 +1799,10 @@ class Flow( object ) :
             msg = msg.replace( cfn, nfn )
             self._shelve()
             self._update( self.repo.revs( "%s^" % rev ).first() )
-            self._create_branch( nfn, msg, user = ctx.user(), date = util.datestr( ctx.date() ) )
+            self._create_branch( nfn, msg, user = ctx.user(), date = Compatible.datestr( ctx.date() ) )
             self._graft( curr_workspace, **kwarg )
             self._unshelve( cfn )
-            self._strip( curr_workspace, int( ctx ), bookmark = [] )
+            self._strip( curr_workspace, ctx.rev(), bookmark = [] )
 
 
 
@@ -2394,7 +2427,7 @@ commands:
 """
     # Supresses bookmarks, otherwise if the name of a bookmark happens to be the same as a named branch, hg will use the
     # bookmark's revision.
-    repo._bookmarks.clear()
+    Compatible.clear_bookmarks( repo )
 
     flow = Flow( ui, repo, cmd in ["init", "upgrade", "help",] )
     func = {
