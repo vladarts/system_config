@@ -4,6 +4,7 @@ tmp
 .idea*
 *.pyc
 *.iml
+*.egg-info
 
 __pycache__
 
@@ -12,3 +13,5 @@ values.local
 .gradle
 dist
 .pytest_cache
+_version.py
+.eggs
