@@ -13,5 +13,5 @@ source "${VA_SYSTEM_CONFIG_ROOT}/bashrc/docker_env.sh"
 case $( uname -s ) in
     Darwin)
         export PATH="${PATH}:${VA_SYSTEM_CONFIG_ROOT}/bin/macos"
-        break;;
+        ;;
 esac
