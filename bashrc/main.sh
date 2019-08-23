@@ -15,3 +15,5 @@ case $( uname -s ) in
         export PATH="${PATH}:${VA_SYSTEM_CONFIG_ROOT}/bin/macos"
         ;;
 esac
+
+source "${VA_SYSTEM_CONFIG_ROOT}/bashrc/setup_python_virtualenv.sh"
