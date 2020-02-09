@@ -16,3 +16,4 @@ dist
 .pytest_cache
 _version.py
 .eggs
+.DS_Store

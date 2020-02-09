@@ -22,7 +22,7 @@ rm -f ${HOME}/.bash_profile
 cp ${HOME}/dev/system_config/bashrc/macos_bash_profile.sh ${HOME}/.bash_profile
 
 #: Global ignore file
-git config --global core.excludesfile ${HOME}/system_config/bashrc/ignore
+git config --global core.excludesfile ${HOME}/dev/system_config/bashrc/ignore
 
 
 #: Google Chrome color fix
