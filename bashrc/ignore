@@ -18,3 +18,4 @@ _version.py
 .eggs
 .DS_Store
 .coverage
+.tox
