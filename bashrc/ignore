@@ -17,3 +17,4 @@ dist
 _version.py
 .eggs
 .DS_Store
+.coverage
