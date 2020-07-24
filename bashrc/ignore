@@ -19,3 +19,6 @@ _version.py
 .DS_Store
 .coverage
 .tox
+gradlew*
+gradle-wrapper*
+
