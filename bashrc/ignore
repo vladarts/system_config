@@ -24,4 +24,4 @@ gradle-wrapper*
 
 junit.xml
 
-go.mod
+go.sum
