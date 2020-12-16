@@ -25,3 +25,5 @@ gradle-wrapper*
 junit.xml
 
 go.sum
+
+dev.log
