@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 
-VP_PYTHON="${HOME}/.virtualenvs/vp/bin/python3"
-
 vp.python.setup_virtualenv() {
   echo "Installed pyenv versions:"
   pyenv versions
@@ -29,11 +27,6 @@ vp.python.setup_virtualenv() {
   python_executable="$(pyenv prefix "${pyenv_version}")/bin/python"
 
   mkvirtualenv -p "${python_executable}" "${virtualenv_name_prefix}${virtualenv_name}"
-}
-
-vp.idea.gen_project() {
-  # shellcheck disable=SC2068
-  ${VP_PYTHON} "${VP_SYSTEM_CONFIG_ROOT}/bin/gen_idea_project.py" $@
 }
 
 #:
