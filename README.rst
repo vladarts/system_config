@@ -1,31 +1,41 @@
-Всякие полезности для настройки системы
-=======================================
+System configuration
+====================
 
 PS1 and CLI tools
 -----------------
+
+Clone the repo:
+
+.. code-block:: bash
+
+  mkdir -p ${HOME}/dev/github.com/xxxbobrxxx/system_config
+  git clone git@github.com:xxxbobrxxx/system_config.git ${HOME}/dev/github.com/xxxbobrxxx/system_config
 
 Add to ~/.bashrc or ~/.bash_profile
 
 .. code-block:: sh
 
-    #: VladArts CLI tools
-    source ${HOME}/dev/system_config/bashrc/main.sh
+  #: CLI tools
+  source ${HOME}/dev/github.com/xxxbobrxxx/system_config/bashrc/main.sh
 
-Шрифты
-------
+Fonts
+-----
 
-*    https://github.com/vjpr/monaco-bold - MonacoB 8 для консоли
-*    https://github.com/chrissimpkins/Hack - Hack 12 для Pycharm 
-
+- https://github.com/vjpr/monaco-bold - MonacoB 8 для консоли
+- https://github.com/chrissimpkins/Hack - Hack 12 для Pycharm
 
 Mercurial PS1
 -------------
 
-* Compile it with::
+* Compile it with:
 
-    gcc -o fasthgbranch hg-ps1.c
-    sudo ln -s $(pwd)/fasthgbranch /usr/bin/
+.. code-block:: bash
 
-* Use in PS1 with::
+  gcc -o fasthgbranch hg-ps1.c
+  sudo ln -s $(pwd)/fasthgbranch /usr/bin/
 
-	_\$(fasthgbranch)_
+* Use in PS1 with:
+
+.. code-block:: bash
+
+  _\$(fasthgbranch)_
