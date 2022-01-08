@@ -1,19 +1,18 @@
 #!/usr/bin/env bash
+
 #: Global definitions
-export VA_SYSTEM_CONFIG_ROOT=${VA_SYSTEM_CONFIG_ROOT:-${HOME}/dev/github.com/xxxbobrxxx/system_config}
+export VP_SYSTEM_CONFIG_ROOT=${VP_SYSTEM_CONFIG_ROOT:-${HOME}/dev/github.com/xxxbobrxxx/system_config}
 
 #: PS1
-source "${VA_SYSTEM_CONFIG_ROOT}/bashrc/ps1_git.sh"
-source "${VA_SYSTEM_CONFIG_ROOT}/bashrc/ps1_colors.sh"
+source "${VP_SYSTEM_CONFIG_ROOT}/bashrc/ps1_git.sh"
+source "${VP_SYSTEM_CONFIG_ROOT}/bashrc/ps1_colors.sh"
 
-#: Docker environment manager
-source "${VA_SYSTEM_CONFIG_ROOT}/bashrc/docker_env.sh"
-
-# enable fasthgbranch
+#: enable platform-related binaries
 case $( uname -s ) in
     Darwin)
-        export PATH="${PATH}:${VA_SYSTEM_CONFIG_ROOT}/bin/macos"
+        export PATH="${PATH}:${VP_SYSTEM_CONFIG_ROOT}/bin/macos"
         ;;
 esac
 
-source "${VA_SYSTEM_CONFIG_ROOT}/bashrc/setup_python_virtualenv.sh"
+#: Tools
+source "${VP_SYSTEM_CONFIG_ROOT}/bashrc/tools.sh"
