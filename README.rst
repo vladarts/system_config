@@ -8,15 +8,15 @@ Clone the repo:
 
 .. code-block:: bash
 
-  mkdir -p ${HOME}/dev/github.com/xxxbobrxxx/system_config
-  git clone git@github.com:xxxbobrxxx/system_config.git ${HOME}/dev/github.com/xxxbobrxxx/system_config
+  mkdir -p ${HOME}/dev/github.com/vladarts/system_config
+  git clone git@github.com:vladarts/system_config.git ${HOME}/dev/github.com/vladarts/system_config
 
 Add to ~/.bashrc or ~/.bash_profile
 
 .. code-block:: sh
 
   #: CLI tools
-  source ${HOME}/dev/github.com/xxxbobrxxx/system_config/bashrc/main.sh
+  source ${HOME}/dev/github.com/vladarts/system_config/bashrc/main.sh
 
 Fonts
 -----
