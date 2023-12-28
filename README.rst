@@ -9,7 +9,7 @@ Clone the repo:
 .. code-block:: bash
 
   mkdir -p ${HOME}/dev/github.com/vladarts/system_config
-  git clone git@github.com:vladarts/system_config.git ${HOME}/dev/github.com/vladarts/system_config
+  git clone https://github.com/vladarts/system_config ${HOME}/dev/github.com/vladarts/system_config
 
 Add to ~/.bashrc or ~/.bash_profile
 
